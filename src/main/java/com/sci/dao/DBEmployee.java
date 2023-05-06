@@ -22,6 +22,19 @@ public class DBEmployee {
 
     }
 
+    public Employee get(Integer employeeId) {
+
+        try (Session session = DBConfig.SESSION_FACTORY.openSession()) {
+
+            return session.get(Employee.class, employeeId);
+
+        } catch (Exception ex) {
+            System.err.println(ex.getMessage());
+        }
+
+        return null;
+    }
+
     public Integer insert(Employee employee) {
 
         Transaction transaction = null;
@@ -44,6 +57,49 @@ public class DBEmployee {
 
         return employeeId;
     }
+
+    public void update(Employee employee) {
+
+        Transaction transaction = null;
+
+        try (Session session = DBConfig.SESSION_FACTORY.openSession()) {
+
+            transaction = session.beginTransaction();
+
+            session.update(employee);
+
+            transaction.commit();
+
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.err.println(ex.getMessage());
+        }
+    }
+
+    public void delete(Integer employeeId) {
+
+        Transaction transaction = null;
+
+        try (Session session = DBConfig.SESSION_FACTORY.openSession()) {
+
+            transaction = session.beginTransaction();
+
+            Employee employee = get(employeeId);
+
+            session.delete(employee);
+
+            transaction.commit();
+
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.err.println(ex.getMessage());
+        }
+    }
+
 
 
 }
