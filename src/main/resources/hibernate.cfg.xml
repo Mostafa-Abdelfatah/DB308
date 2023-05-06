@@ -16,7 +16,9 @@
     <property name="show_sql">true</property>
 
     <mapping class="com.sci.models.Employee"/>
-<!--    <mapping class="com.sci.models.Actor"/>-->
+    <mapping class="com.sci.models.Departments"/>
+
+    <!--    <mapping class="com.sci.models.Actor"/>-->
 <!--    <mapping class="com.sci.models.Address"/>-->
 <!--    <mapping class="com.sci.models.City"/>-->
 <!--    <mapping class="com.sci.models.Movie"/>-->
