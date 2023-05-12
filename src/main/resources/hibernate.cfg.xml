@@ -17,6 +17,7 @@
 
     <mapping class="com.sci.models.Employee"/>
     <mapping class="com.sci.models.Departments"/>
+    <mapping class="com.sci.models.Jobs"/>
 
     <!--    <mapping class="com.sci.models.Actor"/>-->
 <!--    <mapping class="com.sci.models.Address"/>-->
